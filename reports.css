@@ -1,0 +1,82 @@
+.main-content {
+    padding: 2rem;
+    flex: 1;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .summary-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .summary-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: white;
+  }
+  
+  .summary-card h4 {
+    margin-bottom: 10px;
+  }
+  
+  .summary-card.income {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .summary-card.expenses {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .summary-card.savings {
+    background-color: #d1ecf1;
+    color: #0c5460;
+  }
+  
+  .insights-section {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .btn-insight {
+    background-color: #343a40;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .btn-insight:hover {
+    background-color: #23272b;
+  }
+  
+  .insight-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e2e3e5;
+    border-left: 5px solid #6c757d;
+    border-radius: 8px;
+    text-align: left;
+  }
+  
+  .d-none {
+    display: none;
+  }
+  

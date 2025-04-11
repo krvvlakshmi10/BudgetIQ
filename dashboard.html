@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Finance Tracker</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <h2 style="color:rgb(61, 133, 177)">
+      <img src="css/biq.png" alt="Logo" style="height: 70px; vertical-align: middle; margin-right: 8px;">
+      Budget<span style="color:blue">IQ</span>
+    </h2>
+    <ul>
+     <div class="bgc"><li><a href="dashboard.html">📝 Add Transaction</a></li></div><br>
+     <div class="bgc"><li><a href="history.html">🧾 History</a></li></div><br>
+     <div class="bgc"><li><a href="reports.html">🔍Insights</a></li></div><br>
+     <div class="bgc"><li><a href="analytics.html">📈 Analytics</a></li></div><br>
+      <div class="bgc"><li><a href="index.html" id="logoutBtn">➡️ Logout</a></li></div><br>
+    </ul>
+  </aside>
+
+  <div class="main-content">
+    <div class="sections-wrapper">
+    <div class="left-section">
+      <div class="container">
+      
+        <div class="header">
+          <h2>Welcome, <span id="username"></span></h2>
+        </div>
+
+        <div class="balance">
+          <h3>Total Balance: <span id="balance">0</span></h3>
+        </div>
+
+        <form id="transactionForm">
+          <select id="type" required>
+            <option value="">Select Type</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+          <input type="number" id="amount" placeholder="Amount (₹)" required />
+          <input type="text" id="category" placeholder="Category" required />
+          <input type="date" id="date" required />
+          <input type="text" id="description" placeholder="Description" />
+          <button type="submit">Add Transaction</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="container">
+        <h3>Recent Transactions</h3>
+        <ul id="transactionList"></ul>
+      </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script>
+    // Hide Sign In link if user is logged in
+    const user = localStorage.getItem("username");
+    if (user) {
+      document.getElementById("signInLink").style.display = "none";
+      document.getElementById("username").textContent = user;
+    }
+
+    // Show only latest 2 transactions
+    function renderRecentTransactions(transactions) {
+      const list = document.getElementById("transactionList");
+      list.innerHTML = "";
+      const recent = transactions.slice(-2).reverse();
+      recent.forEach(tx => {
+        const li = document.createElement("li");
+        li.textContent = `${tx.date} - ₹${tx.amount} (${tx.category})`;
+        list.appendChild(li);
+      });
+    }
+
+    // Dummy fetch function (replace with actual fetch)
+    document.addEventListener("DOMContentLoaded", () => {
+      const dummyTransactions = JSON.parse(localStorage.getItem("transactions") || "[]");
+      renderRecentTransactions(dummyTransactions);
+    });
+  </script>
+</body>
+</html>

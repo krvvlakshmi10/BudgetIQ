@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/analytics.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <h2 style="color:rgb(61, 133, 177)">
+      <img src="css/biq.png" alt="Logo" style="height: 70px; vertical-align: middle; margin-right: 8px;">
+      Budget<span style="color:blue">IQ</span>
+    </h2>
+    <ul>
+      <div class="bgc"><li><a href="dashboard.html">📝 Add Transaction</a></li></div><br>
+      <div class="bgc"><li><a href="history.html">🧾 History</a></li></div><br>
+      <div class="bgc"><li><a href="reports.html">🔍Insights</a></li></div><br>
+      <div class="bgc"><li><a href="analytics.html">📈 Analytics</a></li></div><br>
+       <div class="bgc"><li><a href="index.html" id="logoutBtn">➡️ Logout</a></li></div><br>
+     </ul>
+  </aside>
+
+  <div class="main-content">
+    <h1 class="section-title">Analytics</h1>
+    <div class="chart-section">
+      <div class="chart-box">
+        <h3>Expense Breakdown</h3>
+        <canvas id="expenseChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Income Breakdown</h3>
+        <canvas id="incomeChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <script src="js/logout.js"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

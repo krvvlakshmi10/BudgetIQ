@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transaction History</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <h2 style="color:rgb(61, 133, 177)">
+      <img src="css/biq.png" alt="Logo" style="height: 70px; vertical-align: middle; margin-right: 8px;">
+      Budget<span style="color:blue">IQ</span>
+    </h2>
+    <ul>
+      <div class="bgc"><li><a href="dashboard.html">📝 Add Transaction</a></li></div><br>
+      <div class="bgc"><li><a href="history.html">🧾 History</a></li></div><br>
+      <div class="bgc"><li><a href="reports.html">🔍Insights</a></li></div><br>
+      <div class="bgc"><li><a href="analytics.html">📈 Analytics</a></li></div><br>
+       <div class="bgc"><li><a href="index.html" id="logoutBtn">➡️ Logout</a></li></div><br>
+     </ul>
+  </aside>
+  <div class="container" style="margin: 2rem auto; max-width:900px;">
+    <h2>All Transactions</h2>
+<div class="table-container">
+  <table id="transactionTable">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody id="transactionBody">
+      <!-- Transactions will go here -->
+    </tbody>
+  </table>
+</div>
+
+    <ul id="fullTransactionList"></ul>
+    <!-- <a href="dashboard.html">← Back to Dashboard</a> -->
+  </div>
+
+  <script>
+   const token = localStorage.getItem('token');
+const userId = JSON.parse(atob(token.split('.')[1])).userId;
+
+async function loadAllTransactions() {
+  const res = await fetch(`http://localhost:5000/api/transactions/${userId}`);
+  const data = await res.json();
+
+  const tbody = document.getElementById("transactionBody");
+  tbody.innerHTML = '';
+
+  if (data.length === 0) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td colspan="5" style="text-align:center;">No transactions found.</td>`;
+    tbody.appendChild(row);
+  } else {
+    data.reverse().forEach(tx => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="${tx.type === 'income' ? 'income' : 'expense'}">${tx.type}</td>
+        <td>${tx.category}</td>
+        <td>₹${tx.amount}</td>
+        <td>${new Date(tx.date).toLocaleDateString()}</td>
+        <td>${tx.description || ''}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+}
+
+loadAllTransactions();
+
+  </script>
+   <script src="js/logout.js"></script>
+</body>
+</html>

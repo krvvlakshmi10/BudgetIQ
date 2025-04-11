@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup - Finance Tracker</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="signup-wrapper">
+    <div class="form-container">
+      <h2>Sign up for Finance Tracker</h2>
+      <form id="signupForm">
+        <input type="text" id="name" placeholder="Name" required />
+        <input type="email" id="email" placeholder="Email"
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|net|org|edu|in)$"
+          title="Enter a valid email address ending in .com, .net, .org, .edu, or .in"
+          required />
+        <input type="password" id="password" placeholder="Password" minlength="8"
+          title="Password must be at least 8 characters" required />
+        <input type="tel" id="mobile" placeholder="Mobile Number" pattern="\d{10}"
+          title="Enter a 10-digit mobile number" required />
+        <p id="signupMsg"></p>
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

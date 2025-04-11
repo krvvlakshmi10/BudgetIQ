@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Financial Report</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/reports.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <h2 style="color:rgb(61, 133, 177)">
+      <img src="css/biq.png" alt="Logo" style="height: 70px; vertical-align: middle; margin-right: 8px;">
+      Budget<span style="color:blue">IQ</span>
+    </h2>
+    <ul>
+      <div class="bgc"><li><a href="dashboard.html">📝 Add Transaction</a></li></div><br>
+      <div class="bgc"><li><a href="history.html">🧾 History</a></li></div><br>
+      <div class="bgc"><li><a href="reports.html">🔍Insights</a></li></div><br>
+      <div class="bgc"><li><a href="analytics.html">📈 Analytics</a></li></div><br>
+       <div class="bgc"><li><a href="index.html" id="logoutBtn">➡️ Logout</a></li></div><br>
+     </ul>
+  </aside>
+
+  <div class="main-content">
+    <div class="container">
+      <h2 class="section-title">Financial Summary</h2>
+
+      <div class="summary-cards">
+        <div class="summary-card income">
+          <h4>Total Income</h4>
+          <p id="reportIncome">₹0</p>
+        </div>
+        <div class="summary-card expenses">
+          <h4>Total Expenses</h4>
+          <p id="reportExpenses">₹0</p>
+        </div>
+        <div class="summary-card savings">
+          <h4>Net Savings</h4>
+          <p id="reportSavings">₹0</p>
+        </div>
+      </div>
+
+      <div class="insights-section">
+        <button class="btn-insight" id="generateInsightsBtn">Generate AI Insights</button>
+        <div id="insightsContainer" class="insight-box d-none"></div>
+      </div>
+    </div>
+  </div>
+  <script src="js/logout.js"></script>
+  <script src="js/insight.js"></script>
+  <script src="js/report.js"></script>
+</body>
+</html>
